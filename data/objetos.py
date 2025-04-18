@@ -1,5 +1,6 @@
 from models.ingrediente import Ingrediente
 from models.producto import Producto
+from models.orden import Orden
 
 Ingrediente.cargar_ingredientes()
 
@@ -69,3 +70,5 @@ milkshake = Producto('malteada de fresa', 60 , milkshake_Ingredientes)
 smoothie = Producto('smoothie de mora azul', 60 , smoothie_Ingredientes)
 
 productos = [cake, flan, cookies, brownie, american, milkshake, smoothie]
+
+actual_orden = Orden(productos)
