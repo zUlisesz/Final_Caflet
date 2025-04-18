@@ -46,3 +46,19 @@ class Consulta:
         finally:
             cursor.close()
             key.close()
+            
+    @staticmethod
+    def set_entregado(id):
+        key = Connection.connectBD()
+        cursor = key.cursor()    
+        query = 'UPDATE cafeteria.pedidos SET entregado = True WHERE id = %s; '
+        
+        try:
+            cursor.execute(query,(id,))
+            key.commit()
+        except mysql.connector.Error as e:
+            return f'Error: {e}'
+        finally:
+            cursor.close() 
+            key.close()
+

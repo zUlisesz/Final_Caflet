@@ -9,3 +9,9 @@ def print_pedidos() -> None:
     for element in Pedido.contenido:
         print(element)
         
+Pedido.cargar_pedidos()
+print_pedidos()
+
+Pedido.entregar_pedido(11)
+print_pedidos()
+
