@@ -19,3 +19,4 @@ class Ingrediente:
     def cargar_ingredientes(cls):
         for nombre, cantidad, minn, maxx in Consulta.all_ingredientes():
             Ingrediente(nombre , cantidad, minn , maxx)
+            
