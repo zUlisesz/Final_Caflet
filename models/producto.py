@@ -1,7 +1,7 @@
 class Producto:
-    def __init__(self ,nombre, cantidad, precio, ingredientes):
+    def __init__(self ,nombre, precio, ingredientes:list):
         self.nombre = nombre
-        self.cantidad = cantidad
+        self.cantidad = 0
         self.precio = precio 
         self.ingredientes = ingredientes
         
@@ -10,8 +10,8 @@ class Producto:
 
     ##
     def es_cocinable(self):
-        for ingredient, required_qty in self.ingredientes:
-            if required_qty > ingredient.quantity:
+        for ingrediente, minimos in self.ingredientes:
+            if minimos > ingrediente.cantidad:
                 return False
 
         return True
