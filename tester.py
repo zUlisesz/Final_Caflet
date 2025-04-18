@@ -1,16 +1,11 @@
 from data.objetos import *
-    
+from models.pedido import Pedido
+
 def print_orden()-> None:
     for element in actual_orden.productos:
         print(element)
         
-print_orden()
-for element in actual_orden.productos:
-    element.cantidad = 3
-    
-print_orden()
-
-print('limpiadno orden....')
-actual_orden.limpiar_pedido()
-print_orden()
-    
+def print_pedidos() -> None:
+    for element in Pedido.contenido:
+        print(element)
+        

@@ -4,10 +4,8 @@ class Consulta:
     
     @staticmethod
     def all_ingredientes()->list:
-        
         key = Connection.connectBD()
         cursor = key.cursor()
-        
         query = 'SELECT * FROM cafeteria.ingredientes'
         
         try:
@@ -18,3 +16,33 @@ class Consulta:
         finally:
             cursor.close()
             key.close
+            
+    @staticmethod
+    def all_pedidos() -> list:
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = 'SELECT * FROM cafeteria.pedidos WHERE entregado = False;'
+        
+        try:
+            cursor.execute(query)
+            return cursor.fetchall()
+        except mysql.connector.Error as e:
+            return f'Error: {e}'
+        finally:
+            cursor.close()
+            key.close()
+            
+    @staticmethod
+    def all_ventas() -> list:
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = 'SELECT * FROM cafeteria.pedidos WHERE entregado = True;'
+        
+        try:
+            cursor.execute(query)
+            return cursor.fetchall()
+        except mysql.connector.Error as e:
+            return f'Error: {e}'
+        finally:
+            cursor.close()
+            key.close()
