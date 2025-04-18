@@ -1,4 +1,36 @@
 import flet as ft 
+from data.objetos import actual_orden
+
+#funciones axuliares para manipular la tabla del pedido
+def on_row_selected(e):
+    row_name = e.control.data
+    updated = False
+    for row in order_table.rows:
+        if row.data == row_name:
+            t = int(row.cells[1].content.value)
+            row.cells[1].content.value = str( t + 1)
+            updated = True
+            break
+
+    if not updated:
+        order_table.rows.append(
+            ft.DataRow(
+                data= row_name,
+                cells=[
+                    ft.DataCell(ft.Text(value=row_name.upper())),
+                    ft.DataCell(ft.Text(value='1', width= 80 ,text_align= ft.TextAlign.CENTER))
+                ]
+            )
+        )
+        
+    actual_orden.add_products(order_table)
+    total_account.value = 'TOTAL A PAGAR = $ {}'.format(actual_orden.calcular_cuenta())
+    total_account.update()
+    order_table.update()
+    
+def reset_values(e = None):
+    user_name.value = None
+    user_password.value = None
 
 #fuente principal de todas de las cadenas de las vistas
 fuente = 'Arial'

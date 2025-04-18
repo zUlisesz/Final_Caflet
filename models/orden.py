@@ -22,5 +22,16 @@ class Orden:
     def limpiar_pedido(self) -> None:
         for element in self.productos:
             element.cantidad = 0 
-        
+            
+    def add_products(cls, pedido) -> None:
+        for element in pedido.rows:
+            product_name = element.data 
+            try:
+                quantity = int(element.cells[1].content.value)
+            except (ValueError, TypeError):
+                quantity = 0 
+            for product in cls.content:
+                if product.name == product_name:
+                    product.quantity = quantity
+                    break
         
