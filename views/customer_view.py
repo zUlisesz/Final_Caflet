@@ -26,7 +26,7 @@ def customerView(page: ft.Page):
                             Box700x340(control= ft.Column(
                                 spacing=10,
                                 horizontal_alignment= ft.MainAxisAlignment.CENTER,
-                                controls=[customer_title, instructions_label, total_account]
+                                controls=[customer_title, instructions_label, total_account, boton_pedido]
                             ), padding=60),
                             Box700x340(control=order_table, height=410)
                         ]

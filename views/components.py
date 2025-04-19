@@ -1,5 +1,6 @@
 import flet as ft 
 from data.objetos import actual_orden
+from models.ingrediente import Ingrediente
 
 #funciones axuliares para manipular la tabla del pedido
 def on_row_selected(e):
@@ -32,9 +33,16 @@ def reset_values(e = None) ->None:
     user_name.value = None
     user_password.value = None
     
-def hacer_pedido() -> None:
-    pass
-    # por terminar ##############################################################################
+def hacer_pedido(e) -> None:
+    totales =Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
+        
+    print(actual_orden.es_producible(totales))
+    
+    actual_orden.limpiar_pedido()
+    order_table.rows.clear()
+    order_table.update()
+    
+    
 
 #fuente principal de todas de las cadenas de las vistas
 fuente = 'Arial'
@@ -83,7 +91,7 @@ Desserts_rows =[
         cells=[
             ft.DataCell(ft.Text("REBANADA DE PASTEL", font_family= fuente)),
             ft.DataCell(ft.Text("TRES LECHES", font_family= fuente)),
-            ft.DataCell(ft.Text("$ 50", font_family= fuente)),
+            ft.DataCell(ft.Text("$ 60", font_family= fuente)),
         ],
     ),
     ft.DataRow(
@@ -92,7 +100,7 @@ Desserts_rows =[
         cells=[
             ft.DataCell(ft.Text("REBANADA DE FLAN", font_family= fuente)),
             ft.DataCell(ft.Text("NAPOLITANO", font_family= fuente)),
-            ft.DataCell(ft.Text("$ 50", font_family= fuente)),
+            ft.DataCell(ft.Text("$ 60", font_family= fuente)),
         ],
     ),
     ft.DataRow(

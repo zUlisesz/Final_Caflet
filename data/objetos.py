@@ -63,10 +63,10 @@ smoothie_Ingredientes = [
 
 cake = Producto('rebanada de pastel', 60 , cake_Ingredientes)
 flan = Producto('rebanada de flan', 60, flan_Ingredientes)
-brownie = Producto('brownie', 60 , brownie_Ingredientes)
-cookies = Producto('docena de galletas', 60 , cookies_Ingredientes)
-american = Producto('café americano', 60, amirican_Ingredientes)
-milkshake = Producto('malteada de fresa', 60 , milkshake_Ingredientes)
+brownie = Producto('brownie', 80  , brownie_Ingredientes)
+cookies = Producto('docena de galletas', 120 , cookies_Ingredientes)
+american = Producto('café americano', 40 , amirican_Ingredientes)
+milkshake = Producto('malteada de fresa', 50 , milkshake_Ingredientes)
 smoothie = Producto('smoothie de mora azul', 60 , smoothie_Ingredientes)
 
 productos = [cake, flan, cookies, brownie, american, milkshake, smoothie]
