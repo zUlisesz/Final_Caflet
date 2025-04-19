@@ -34,4 +34,10 @@ class Orden:
                 if product.nombre == producto:
                     product.cantidad = cantidad
                     break
-        
+               
+    def es_producible(self, materiales) -> bool:
+        for ingrediente, minimos in materiales:
+            if minimos > ingrediente.cantidad:
+                return False
+
+        return True

@@ -9,9 +9,13 @@ def print_pedidos() -> None:
     for element in Pedido.contenido:
         print(element)
         
-Pedido.cargar_pedidos()
-print_pedidos()
 
-Pedido.entregar_pedido(11)
-print_pedidos()
+def llenar_pedido():
+    for element in actual_orden.productos:
+        element.cantidad = 15
+        
+llenar_pedido()
 
+totales =Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
+
+print(actual_orden.es_producible(totales))

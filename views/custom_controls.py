@@ -9,15 +9,15 @@ class Box700x340(ft.Container):
             border_radius= 12,
             padding = padding,
             alignment= ft.alignment.center,
-            shadow= ft.BoxShadow(
-                blur_radius= 10,
-                color = ft.Colors.BLACK87,
-                offset= ft.Offset(4, 4),
-            ),
-            gradient= ft.LinearGradient(
-                begin= ft.alignment.top_right,
-                end= ft.alignment.bottom_left,
-                colors=[ft.Colors.DEEP_ORANGE_ACCENT, ft.Colors.BLACK12],
+            #shadow= ft.BoxShadow(
+            #    blur_radius= 10,
+            #    color = ft.Colors.BLACK87,
+            #    offset= ft.Offset(4, 4),
+            #),
+            gradient= ft.LinearGradient(  
+                begin= ft.alignment.top_center,
+                end= ft.alignment.bottom_center,
+                colors=[ft.Colors.LIME_ACCENT, ft.Colors.BLACK12],
             )
         )
         

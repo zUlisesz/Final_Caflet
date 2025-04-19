@@ -28,9 +28,13 @@ def on_row_selected(e):
     total_account.update()
     order_table.update()
     
-def reset_values(e = None):
+def reset_values(e = None) ->None:
     user_name.value = None
     user_password.value = None
+    
+def hacer_pedido() -> None:
+    pass
+    # por terminar ##############################################################################
 
 #fuente principal de todas de las cadenas de las vistas
 fuente = 'Arial'
@@ -214,7 +218,7 @@ log_in = ft.BottomSheet(
     elevation= 10 
 )
 
-#letreros para las vistas
+#letreros y botones para la vistas
 
 titulo_cafeteria = ft.Text(value = 'BIENVENIDO A LA CAFETERÍA' , size=40 , font_family = fuente)
 customer_title = ft.Text(value = 'CREANDO MI PEDIDO', size=30,font_family= fuente) 
@@ -223,3 +227,10 @@ QUE DESEAS ODERNAR EN LOS MENÚS DE LA PARTE SUPERIOR Y SELECCIONA DESDE DONDE N
 font_family= fuente, size= 10)
 
 total_account = ft.Text(value = 'TOTAL A PAGAR = $ 0', font_family= fuente, size= 10 )
+
+boton_pedido = ft.ElevatedButton(
+    text= 'HACER PEDIDO',
+    width= 200 ,
+    elevation= 30,
+    on_click= hacer_pedido
+)

@@ -8,10 +8,10 @@ class Producto:
     def __repr__(self):
         return f'{self.nombre} - {self.cantidad} - {self.precio}'
 
-    ##
-    def es_cocinable(self):
+    def es_cocinable(self) -> bool:
         for ingrediente, minimos in self.ingredientes:
             if minimos > ingrediente.cantidad:
                 return False
 
         return True
+                
