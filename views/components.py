@@ -1,6 +1,7 @@
 import flet as ft 
 from data.objetos import actual_orden
 from models.ingrediente import Ingrediente
+from database.db_queries import Consulta
 
 #funciones axuliares para manipular la tabla del pedido
 def on_row_selected(e):
@@ -23,9 +24,9 @@ def on_row_selected(e):
                 ]
             )
         )
-        
+    
     actual_orden.agregar_productos(order_table)
-    total_account.value = 'TOTAL A PAGAR = $ {}'.format(actual_orden.calcular_cuenta())
+    
     total_account.update()
     order_table.update()
     
@@ -34,10 +35,18 @@ def reset_values(e = None) ->None:
     user_password.value = None
     
 def hacer_pedido(e) -> None:
+    actual_orden.agregar_productos(order_table)
     totales =Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
-        
-    print(actual_orden.es_producible(totales))
     
+    if actual_orden.es_producible(totales) :
+        print('producible')
+        actual_orden.cocinar(totales)
+        Consulta.send_pedido(actual_orden)
+        Ingrediente.actualizar_ingredientes()
+            
+    else:
+        print('no producible')
+        
     actual_orden.limpiar_pedido()
     order_table.rows.clear()
     order_table.update()

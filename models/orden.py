@@ -16,6 +16,7 @@ class Orden:
         pedido_listo = [element.cantidad for element in self.productos ]
         pedido_listo.append(date.today())
         pedido_listo.append(cuenta)
+        pedido_listo.append(False)
         
         return pedido_listo
     
@@ -36,8 +37,15 @@ class Orden:
                     break
                
     def es_producible(self, materiales) -> bool:
-        for ingrediente, minimos in materiales:
-            if minimos > ingrediente.cantidad:
+        for material in materiales:
+            if material[1] > material[0].cantidad:
                 return False
 
         return True
+    
+    def cocinar(self, materiales):
+        for material in materiales:
+            material[0].cantidad -= material[1]
+            
+        
+        

@@ -48,7 +48,7 @@ class Consulta:
             key.close()
             
     @staticmethod
-    def set_entregado(id):
+    def set_entregado(id) -> None:
         key = Connection.connectBD()
         cursor = key.cursor()    
         query = 'UPDATE cafeteria.pedidos SET entregado = True WHERE id = %s; '
@@ -57,8 +57,44 @@ class Consulta:
             cursor.execute(query,(id,))
             key.commit()
         except mysql.connector.Error as e:
-            return f'Error: {e}'
+            print(f'Error: {e}')
         finally:
             cursor.close() 
+            key.close()
+            
+    @staticmethod
+    def update_ingredientes(nombre , cantidad) ->None:
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = 'UPDATE cafeteria.ingredientes SET cantidad = %s WHERE nombre = %s;'
+        
+        try:
+            cursor.execute( query, (cantidad, nombre))
+            key.commit()
+        except mysql.connector.Error as e:
+            print(f'Error: {e}')
+        finally:
+            cursor.close()
+            key.close()
+            
+    @staticmethod
+    def send_pedido(orden) -> None:
+        key = Connection.connectBD()
+        cursor = key.cursor() 
+        query = '''
+        INSERT INTO cafeteria.pedidos(
+        pastel, flan, docena_galletas, brownie, americano, malteada, smoothie, fecha, total, entregado) 
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        '''
+        
+        values = tuple(orden.preparar_envio())
+        
+        try:
+            cursor.execute(query, values)
+            key.commit()
+        except mysql.connector.Error as e:
+            print(f'Error: {e}')
+        finally:
+            cursor.close()
             key.close()
 

@@ -41,7 +41,17 @@ class Ingrediente:
                     ingredientes_totales[ingrediente] = cantidad
 
         return [[ingrediente, cantidad] for ingrediente, cantidad in ingredientes_totales.items()]
+    
+    @classmethod
+    def actualizar_ingredientes(cls):
+        for element in cls.inventario.values():
+            Consulta.update_ingredientes(element.nombre, element.cantidad) 
             
-            
+        cls.cargar_ingredientes()
         
+    @classmethod
+    def llenar_invetario(cls):
+        for element in cls.inventario.values():
+            Consulta.update_ingredientes(element.nombre , element.maximo)
             
+        cls.cargar_ingredientes()

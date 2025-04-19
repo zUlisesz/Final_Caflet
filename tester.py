@@ -12,10 +12,13 @@ def print_pedidos() -> None:
 
 def llenar_pedido():
     for element in actual_orden.productos:
-        element.cantidad = 15
+        element.cantidad = 2
         
-llenar_pedido()
-
-totales =Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
-
-print(actual_orden.es_producible(totales))
+def print_inventario():
+    for element in Ingrediente.inventario.values():
+        print(element)
+        
+print_inventario()
+Ingrediente.llenar_invetario()
+print('Lennado el inventario. . . . . ')
+print_inventario()

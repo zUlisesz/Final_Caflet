@@ -11,6 +11,7 @@ class Producto:
     def es_cocinable(self) -> bool:
         for ingrediente, minimos in self.ingredientes:
             if minimos > ingrediente.cantidad:
+                print( f'{ingrediente} - {minimos}')
                 return False
 
         return True
