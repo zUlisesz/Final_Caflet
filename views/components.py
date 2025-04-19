@@ -6,6 +6,7 @@ from views.custom_controls import Box700x340
 
 #funciones axuliares para manipular la tabla del pedido
 def on_row_selected(e):
+    caja_pedido.content = order_table
     order_table.visible = True
     row_name = e.control.data
     updated = False
@@ -27,6 +28,8 @@ def on_row_selected(e):
             )
         )
     
+    
+    caja_pedido.update()
     actual_orden.agregar_productos(order_table)
     order_table.update()
     
@@ -35,6 +38,7 @@ def reset_values(e = None) ->None:
     user_password.value = None
     
 def hacer_pedido(e) -> None:
+    
     actual_orden.agregar_productos(order_table)
     Ingrediente.cargar_ingredientes()
     totales = Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
@@ -42,16 +46,15 @@ def hacer_pedido(e) -> None:
     if actual_orden.es_producible(totales):
         actual_orden.cocinar(totales)
         Ingrediente.cargar_ingredientes()
-
         Consulta.send_pedido(actual_orden)
+        caja_pedido.content = successfuly_done
         
     else:
-        not_enogh.visible = True
+        caja_pedido.content = not_enogh
         
-    order_table.visible = False 
     actual_orden.limpiar_pedido()
     order_table.rows.clear()
-    order_table.update()
+    caja_pedido.update()
     
     
 
@@ -222,8 +225,12 @@ empty_fields  = ft.AlertDialog(
 not_enogh = ft.Text(
     value = 'SETIMOS INFORMALE QUE NO CONTAMOS CON TODOS LOS INGREDIENTES PARA SATISFACER SU PEDIDO',
     font_family= fuente,
-    visible= False
 ) 
+
+successfuly_done = ft.Text(
+    value = 'PEDIDO REALIZADO CON ÉXITO SU ORDEN ESTRÁ LISTA EN APROXIMADAMNETE 20 MINUTOS',
+    font_family= fuente
+)
 
 log_in = ft.BottomSheet(
     content= ft.Container(
@@ -262,11 +269,6 @@ boton_pedido = ft.ElevatedButton(
 )
 
 caja_pedido = Box700x340(
-    control= ft.Row (
-        controls= [
-            order_table,
-            not_enogh
-        ]  
-    ), 
+    control= order_table,
     height=410
 )

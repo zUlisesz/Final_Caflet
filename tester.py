@@ -19,4 +19,3 @@ def print_inventario():
     for element in Ingrediente.inventario.values():
         print(element)
         
-
