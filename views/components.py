@@ -23,7 +23,7 @@ def on_row_selected(e):
             )
         )
         
-    actual_orden.add_products(order_table)
+    actual_orden.agregar_productos(order_table)
     total_account.value = 'TOTAL A PAGAR = $ {}'.format(actual_orden.calcular_cuenta())
     total_account.update()
     order_table.update()

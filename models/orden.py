@@ -23,15 +23,15 @@ class Orden:
         for element in self.productos:
             element.cantidad = 0 
             
-    def add_products(cls, pedido) -> None:
+    def agregar_productos(cls, pedido) -> None:
         for element in pedido.rows:
-            product_name = element.data 
+            producto = element.data 
             try:
-                quantity = int(element.cells[1].content.value)
+                cantidad = int(element.cells[1].content.value)
             except (ValueError, TypeError):
-                quantity = 0 
-            for product in cls.content:
-                if product.name == product_name:
-                    product.quantity = quantity
+                cantidad = 0 
+            for product in cls.productos:
+                if product.nombre == producto:
+                    product.cantidad = cantidad
                     break
         
