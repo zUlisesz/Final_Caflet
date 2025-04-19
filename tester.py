@@ -1,5 +1,6 @@
 from data.objetos import *
 from models.pedido import Pedido
+from database.db_queries import Consulta
 
 def print_orden()-> None:
     for element in actual_orden.productos:
@@ -18,7 +19,4 @@ def print_inventario():
     for element in Ingrediente.inventario.values():
         print(element)
         
-print_inventario()
-#Ingrediente.llenar_invetario()
-#print('Lennado el inventario. . . . . ')
-#print_inventario()
+

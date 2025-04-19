@@ -72,7 +72,7 @@ class Consulta:
             cursor.execute( query, (cantidad, nombre))
             key.commit()
         except mysql.connector.Error as e:
-            print(f'Error: {e}')
+            print(f'Error al actualizar: {e}')
         finally:
             cursor.close()
             key.close()

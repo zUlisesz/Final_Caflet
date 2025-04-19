@@ -17,16 +17,15 @@ class Ingrediente:
     
     @classmethod
     def cargar_ingredientes(cls):
+        cls.inventario.clear() 
         for nombre, cantidad, minn, maxx in Consulta.all_ingredientes():
             Ingrediente(nombre , cantidad, minn , maxx)
             
     @classmethod
-    def calcular_ingredientes_producto(cls, producto)-> list:
+    def calcular_ingredientes_producto(cls, producto) -> list:
         medida = producto.ingredientes
-        for ingrediente in medida:
-            ingrediente[1] *= producto.cantidad
-            
-        return medida
+        return [[ingrediente[0], ingrediente[1] * producto.cantidad] for ingrediente in medida]
+
     
     @classmethod
     def calcular_ingredientes_totales(cls, productos: list) -> list:
@@ -47,11 +46,8 @@ class Ingrediente:
         for element in cls.inventario.values():
             Consulta.update_ingredientes(element.nombre, element.cantidad) 
             
-        cls.cargar_ingredientes()
         
     @classmethod
     def llenar_invetario(cls):
         for element in cls.inventario.values():
             Consulta.update_ingredientes(element.nombre , element.maximo)
-            
-        cls.cargar_ingredientes()

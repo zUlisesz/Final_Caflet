@@ -28,8 +28,6 @@ def on_row_selected(e):
         )
     
     actual_orden.agregar_productos(order_table)
-    
-    total_account.update()
     order_table.update()
     
 def reset_values(e = None) ->None:
@@ -38,12 +36,14 @@ def reset_values(e = None) ->None:
     
 def hacer_pedido(e) -> None:
     actual_orden.agregar_productos(order_table)
-    totales =Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
+    Ingrediente.cargar_ingredientes()
+    totales = Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
     
-    if actual_orden.es_producible(totales) :
+    if actual_orden.es_producible(totales):
         actual_orden.cocinar(totales)
+        Ingrediente.cargar_ingredientes()
+
         Consulta.send_pedido(actual_orden)
-        Ingrediente.actualizar_ingredientes()
         
     else:
         not_enogh.visible = True
