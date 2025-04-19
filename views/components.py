@@ -8,6 +8,7 @@ from views.custom_controls import Box700x340
 def on_row_selected(e):
     caja_pedido.content = order_table
     order_table.visible = True
+    caja_pedido.alignment = ft.alignment.top_center
     row_name = e.control.data
     updated = False
     for row in order_table.rows:
@@ -42,7 +43,7 @@ def hacer_pedido(e) -> None:
     actual_orden.agregar_productos(order_table)
     Ingrediente.cargar_ingredientes()
     totales = Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
-    
+    caja_pedido.alignment = ft.alignment.center
     if actual_orden.es_producible(totales):
         actual_orden.cocinar(totales)
         Ingrediente.cargar_ingredientes()
@@ -93,9 +94,9 @@ ideas_label = ft.Text(
 
 #componentes gráficos del menú de postres
 Desserts_columns =[
-    ft.DataColumn(ft.Text("POSTRE", font_family= fuente)),
-    ft.DataColumn(ft.Text("SABORES", font_family= fuente)),
-    ft.DataColumn(ft.Text("PRECIO", font_family= fuente)),
+    ft.DataColumn(ft.Text("POSTRE", font_family= fuente, weight= ft.FontWeight.W_500)),
+    ft.DataColumn(ft.Text("SABORES", font_family= fuente, weight= ft.FontWeight.W_500)),
+    ft.DataColumn(ft.Text("PRECIO", font_family= fuente, weight= ft.FontWeight.W_500)),
 ]
 
 Desserts_rows =[
@@ -138,7 +139,7 @@ Desserts_rows =[
 ]
 
 Desserts_menu = ft.DataTable(
-    heading_row_height= ft.FontWeight.W_400,
+    heading_row_color= ft.Colors.GREY_200,
     border_radius= 12, 
     columns= Desserts_columns,
     rows= Desserts_rows
@@ -147,9 +148,9 @@ Desserts_menu = ft.DataTable(
 #componentes gráficos del menú de bebidas
 
 beverages_columns = [
-    ft.DataColumn(ft.Text("BEBIDA", font_family= fuente)),
-    ft.DataColumn(ft.Text("SABORES", font_family= fuente)),
-    ft.DataColumn(ft.Text("PRECIO", font_family= fuente), numeric=True),
+    ft.DataColumn(ft.Text("BEBIDA", font_family= fuente, weight= ft.FontWeight.W_500)),
+    ft.DataColumn(ft.Text("SABORES", font_family= fuente,  weight= ft.FontWeight.W_500)),
+    ft.DataColumn(ft.Text("PRECIO", font_family= fuente,  weight= ft.FontWeight.W_500)),
 ]
 
 beverages_rows = [
@@ -183,6 +184,7 @@ beverages_rows = [
 ]
 
 Beverages_menu = ft.DataTable(
+    heading_row_color= ft.Colors.GREY_200,
     heading_row_height= ft.FontWeight.W_400,
     border_radius= 12,
     columns= beverages_columns,
@@ -192,12 +194,12 @@ Beverages_menu = ft.DataTable(
 #componentes gráficos de la tabla de pedido
 
 order_columns = [
-    ft.DataColumn(ft.Text("PRODUCTO", font_family= fuente, weight= ft.FontWeight.W_400)),
-    ft.DataColumn(ft.Text("CANTIDAD", font_family= fuente,weight =  ft.FontWeight.W_400))
+    ft.DataColumn(ft.Text("PRODUCTO", font_family= fuente, weight= ft.FontWeight.W_500)),
+    ft.DataColumn(ft.Text("CANTIDAD", font_family= fuente,weight =  ft.FontWeight.W_500))
 ]
 
 order_table = ft.DataTable(
-    heading_row_height= ft.FontWeight.W_400,
+    heading_row_color= ft.Colors.GREY_200,
     border_radius= 12,
     visible= False ,
     columns= order_columns,
@@ -223,13 +225,16 @@ empty_fields  = ft.AlertDialog(
 )
 
 not_enogh = ft.Text(
-    value = 'SETIMOS INFORMALE QUE NO CONTAMOS CON TODOS LOS INGREDIENTES PARA SATISFACER SU PEDIDO',
+    value = 'SENTIMOS INFORMALE QUE:\nNO CONTAMOS CON TODOS LOS INGREDIENTES PARA SATISFACER SU PEDIDO',
     font_family= fuente,
+    weight= ft.FontWeight.W_500
 ) 
 
 successfuly_done = ft.Text(
-    value = 'PEDIDO REALIZADO CON ÉXITO SU ORDEN ESTRÁ LISTA EN APROXIMADAMNETE 20 MINUTOS',
-    font_family= fuente
+    value = 'PEDIDO REALIZADO CON ÉXITO,\nORDEN LISTA EN APROXIMADAMENTE 20 MINS',
+    font_family= fuente,
+    weight= ft.FontWeight.W_500,
+    text_align= ft.TextAlign.CENTER
 )
 
 log_in = ft.BottomSheet(
@@ -256,7 +261,7 @@ log_in = ft.BottomSheet(
 titulo_cafeteria = ft.Text(value = 'BIENVENIDO A LA CAFETERÍA' , size=40 , font_family = fuente)
 customer_title = ft.Text(value = 'CREANDO MI PEDIDO', size=30,font_family= fuente) 
 instructions_label = ft.Text( value = '''PARA CREAR TU PEDIDO SOLO HAZ CLICK SOBRE EL PRODUCTO QUE
-QUE DESEAS ODERNAR EN LOS MENÚS DE LA PARTE SUPERIOR Y SELECCIONA DESDE DONDE NOS VISITAS''',
+QUE DESEAS ODERNAR EN LOS MENÚS''',
 font_family= fuente, size= 10)
 
 total_account = ft.Text(value = 'TOTAL A PAGAR = $ 0', font_family= fuente, size= 10 )
@@ -270,5 +275,5 @@ boton_pedido = ft.ElevatedButton(
 
 caja_pedido = Box700x340(
     control= order_table,
-    height=410
+    aligment= ft.alignment.top_center
 )
