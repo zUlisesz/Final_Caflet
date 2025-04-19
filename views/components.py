@@ -268,8 +268,8 @@ total_account = ft.Text(value = 'TOTAL A PAGAR = $ 0', font_family= fuente, size
 
 boton_pedido = ft.ElevatedButton(
     text= 'HACER PEDIDO',
-    width= 200 ,
-    elevation= 30,
+    width= 300 ,
+    elevation= 20,
     on_click= hacer_pedido
 )
 

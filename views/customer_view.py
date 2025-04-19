@@ -3,6 +3,7 @@ from views.components import *
 from views.custom_controls import Box700x340, Box1460x345
 
 def customerView(page: ft.Page):
+    from views.main_view import mainView
     page.controls.clear()
 
     page.add(
@@ -22,14 +23,24 @@ def customerView(page: ft.Page):
                     ),
                     Box1460x345(
                         height=415,
-                        espacios = 120 ,
+                        espacios = 150 ,
                         controls=[
                             Box700x340(control= ft.Column(
-                                spacing= 20,
-                                width = 450, 
+                                spacing= 40,
+                                width = 344, 
                                 horizontal_alignment= ft.MainAxisAlignment.CENTER,
-                                controls=[customer_title, instructions_label, boton_pedido]
-                            ), padding= ft.padding.symmetric( horizontal= 10 , vertical= 20)),
+                                controls=[
+                                    customer_title,
+                                    instructions_label,
+                                    boton_pedido,
+                                    ft.ElevatedButton(
+                                        text= 'VOLVER AL INICIO',
+                                        width= 300,
+                                        elevation= 20 ,
+                                        on_click= lambda e: print('presionado') 
+                                    )
+                                ]
+                            ), padding= ft.padding.symmetric( horizontal= 40 , vertical= 20)),
                             caja_pedido,
                         ]
                     )

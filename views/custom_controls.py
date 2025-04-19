@@ -8,7 +8,8 @@ class Box700x340(ft.Container):
             content= control,
             border_radius= 12,
             padding = padding,
-            alignment= aligment
+            alignment= aligment,
+            bgcolor= ft.Colors.PINK_100
             #shadow= ft.BoxShadow(
             #    blur_radius= 10,
             #    color = ft.Colors.BLACK87,
