@@ -2,9 +2,11 @@ import flet as ft
 from data.objetos import actual_orden
 from models.ingrediente import Ingrediente
 from database.db_queries import Consulta
+from views.custom_controls import Box700x340
 
 #funciones axuliares para manipular la tabla del pedido
 def on_row_selected(e):
+    order_table.visible = True
     row_name = e.control.data
     updated = False
     for row in order_table.rows:
@@ -39,14 +41,14 @@ def hacer_pedido(e) -> None:
     totales =Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
     
     if actual_orden.es_producible(totales) :
-        print('producible')
         actual_orden.cocinar(totales)
         Consulta.send_pedido(actual_orden)
         Ingrediente.actualizar_ingredientes()
-            
-    else:
-        print('no producible')
         
+    else:
+        not_enogh.visible = True
+        
+    order_table.visible = False 
     actual_orden.limpiar_pedido()
     order_table.rows.clear()
     order_table.update()
@@ -187,13 +189,14 @@ Beverages_menu = ft.DataTable(
 #componentes gráficos de la tabla de pedido
 
 order_columns = [
-    ft.DataColumn(ft.Text("PRODUCTO", font_family= fuente)),
-    ft.DataColumn(ft.Text("CANTIDAD", font_family= fuente))
+    ft.DataColumn(ft.Text("PRODUCTO", font_family= fuente, weight= ft.FontWeight.W_400)),
+    ft.DataColumn(ft.Text("CANTIDAD", font_family= fuente,weight =  ft.FontWeight.W_400))
 ]
 
 order_table = ft.DataTable(
     heading_row_height= ft.FontWeight.W_400,
     border_radius= 12,
+    visible= False ,
     columns= order_columns,
     rows = []
 )
@@ -215,6 +218,12 @@ wrong_password = ft.AlertDialog(
 empty_fields  = ft.AlertDialog(
     content= ft.Text(value = 'ASEGURESE DE LLENAR TODOS LOS CMPOS', font_family= fuente)
 )
+
+not_enogh = ft.Text(
+    value = 'SETIMOS INFORMALE QUE NO CONTAMOS CON TODOS LOS INGREDIENTES PARA SATISFACER SU PEDIDO',
+    font_family= fuente,
+    visible= False
+) 
 
 log_in = ft.BottomSheet(
     content= ft.Container(
@@ -250,4 +259,14 @@ boton_pedido = ft.ElevatedButton(
     width= 200 ,
     elevation= 30,
     on_click= hacer_pedido
+)
+
+caja_pedido = Box700x340(
+    control= ft.Row (
+        controls= [
+            order_table,
+            not_enogh
+        ]  
+    ), 
+    height=410
 )

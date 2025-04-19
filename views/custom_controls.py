@@ -1,7 +1,7 @@
 import flet as ft
 
 class Box700x340(ft.Container):
-    def __init__(self, height= None , control = None, event = None, padding = None):
+    def __init__(self, height= None , control = None, event = None, padding = None, page = None ):
         super().__init__(
             width= 700,
             height= 340 if height == None else height,

@@ -19,6 +19,6 @@ def print_inventario():
         print(element)
         
 print_inventario()
-Ingrediente.llenar_invetario()
-print('Lennado el inventario. . . . . ')
-print_inventario()
+#Ingrediente.llenar_invetario()
+#print('Lennado el inventario. . . . . ')
+#print_inventario()
