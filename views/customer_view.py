@@ -35,5 +35,3 @@ def customerView(page: ft.Page):
             )
         )
     )
-    
-ft.app(target = customerView)

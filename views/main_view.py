@@ -1,5 +1,5 @@
 import flet as ft
-from custom_controls import Box400x500
+from views.custom_controls import Box400x500
 from views.customer_view import customerView
 from views.requests_view import requests_view
 from views.admin_view import administradorView

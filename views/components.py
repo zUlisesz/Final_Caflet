@@ -51,7 +51,7 @@ admin_label = ft.Text(
 
 customer_label  = ft.Text(
     value = 'SIGN AS CUSTOMER',
-    font_family= ft.fuente ,
+    font_family= fuente ,
     size= 28,
     width= 340,
     text_align= ft.TextAlign.CENTER
