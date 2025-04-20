@@ -215,6 +215,22 @@ order_table = ft.DataTable(
     rows = []
 )
 
+#componentes gráficos de la tabla de ingredientes
+
+ingredientes_columns = [
+    ft.DataColumn(ft.Text('NOMBRE', font_family= fuente)),
+    ft.DataColumn(ft.Text('CANTIDAD', font_family= fuente)),
+    ft.DataColumn(ft.Text('MÍNIMO DE INGREDIENTES', font_family= fuente)),
+    ft.DataColumn(ft.Text('MÁXIMO DE INGREDIENTES', font_family= fuente)),
+]
+
+ingredientes_table = ft.DataTable(
+    heading_row_color= ft.Colors.GREY_200,
+    border_radius= 12,
+    columns= ingredientes_columns,
+    rows= []
+)
+
 #Entradas de texto de validación
 user_password = ft.TextField(label = 'CONTRASEÑA', width= 300, border_radius= 12, password= True)
 
