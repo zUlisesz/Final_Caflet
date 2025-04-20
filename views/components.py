@@ -231,8 +231,9 @@ not_enogh = ft.Text(
 ) 
 
 successfuly_done = ft.Text(
-    value = 'PEDIDO REALIZADO CON ÉXITO,\nORDEN LISTA EN APROXIMADAMENTE 20 MINS',
+    value = 'PEDIDO REALIZADO CON ÉXITO,\nORDEN LISTA EN APROXIMADAMENTE\n20 MINUTOS',
     font_family= fuente,
+    size= 20 ,
     weight= ft.FontWeight.W_500,
     text_align= ft.TextAlign.CENTER
 )
@@ -262,9 +263,7 @@ titulo_cafeteria = ft.Text(value = 'BIENVENIDO A LA CAFETERÍA' , size=40 , font
 customer_title = ft.Text(value = 'CREANDO MI PEDIDO', size=30,font_family= fuente) 
 instructions_label = ft.Text( value = '''PARA CREAR TU PEDIDO SOLO HAZ CLICK SOBRE EL PRODUCTO QUE
 QUE DESEAS ODERNAR EN LOS MENÚS''',
-font_family= fuente, size= 10)
-
-total_account = ft.Text(value = 'TOTAL A PAGAR = $ 0', font_family= fuente, size= 10 )
+font_family= fuente, size= 16)
 
 boton_pedido = ft.ElevatedButton(
     text= 'HACER PEDIDO',

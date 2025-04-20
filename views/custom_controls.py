@@ -9,11 +9,11 @@ class Box700x340(ft.Container):
             border_radius= 12,
             padding = padding,
             alignment= aligment,
-            bgcolor= ft.Colors.PINK_100
+            #bgcolor= ft.Colors.PINK_100
             #shadow= ft.BoxShadow(
             #    blur_radius= 10,
-            #    color = ft.Colors.BLACK87,
-            #    offset= ft.Offset(4, 4),
+                #color = ft.Colors.BLACK12,
+                #offset= ft.Offset(4, 4),
             #),
             #gradient= ft.LinearGradient(  
                 #begin= ft.alignment.top_center,
