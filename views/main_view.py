@@ -30,7 +30,6 @@ def mainView(page: ft.Page):
     def validation(e):
         if cp.user_password != None:
             if cp.user_password.value.strip() == 'soyyo':
-                page.close(cp.log_in)
                 administradorView(page)
             else:
                 safe_open(cp.wrong_password)         
