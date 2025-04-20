@@ -74,7 +74,7 @@ admin_image = ft.Image(src="assets/admin.png",width=340,height=400,fit=ft.ImageF
 customer_image = ft.Image(src="assets/customer.png",width=340,height=400,fit=ft.ImageFit.CONTAIN)
 ideas_image = ft.Image(src= 'assets/ideas_4.png', width= 400, height= 400, fit  = ft.ImageFit.CONTAIN)
 
-stats_image = ft.Image(src = 'assets/stats.png', width= 500  ,height= 500 , fit = ft.ImageFit.CONTAIN)
+stats_image = ft.Image(src = 'assets/stats.png', width= 660,height= 660 , fit = ft.ImageFit.CONTAIN)
 
 #letreros de las imágenes de las vista
 admin_label = ft.Text(

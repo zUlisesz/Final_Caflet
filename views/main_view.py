@@ -13,31 +13,22 @@ def mainView(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.title = 'CAFLETERÍA'
 
-    def safe_open(control):
-        if control not in page.controls:
-            page.controls.append(control)
-            page.update()
-        page.open(control)
-
-    def safe_close(control):
-        if control in page.controls:
-            page.close(control)
 
     def call_login(e) -> None:
         cp.log_in.content.content.controls[1].on_click = validation
-        safe_open(cp.log_in)
+        page.open(cp.log_in)
 
     def validation(e):
         if cp.user_password != None:
             if cp.user_password.value.strip() == 'soyyo':
+                page.close(cp.log_in)
                 administradorView(page)
             else:
-                safe_open(cp.wrong_password)         
+                page.open(cp.wrong_password)         
         else:
-            safe_open(cp.empty_fields)
+            page.open(cp.empty_fields)
 
         cp.reset_values()
-        safe_close(cp.log_in)
 
     page.add(
         ft.Container(
