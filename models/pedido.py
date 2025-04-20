@@ -23,7 +23,7 @@ class Pedido:
     @classmethod  
     def cargar_pedidos(cls) -> None:
         cls.contenido.clear()
-        for id, pastel, flan, docena_galletas, brownie, americano, malteada, smoothie ,fecha, total, entregado in Consulta.all_pedidos():
+        for id, pastel, flan, docena_galletas, brownie, americano, malteada, smoothie ,fecha, total, entregado in Consulta.select_all_pedidos():
             Pedido(id, pastel, flan, docena_galletas, brownie, americano, malteada, smoothie, fecha, total, entregado)
       
     @classmethod  

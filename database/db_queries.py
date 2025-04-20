@@ -16,12 +16,31 @@ class Consulta:
         finally:
             cursor.close()
             key.close
-            
+      
+      
     @staticmethod
-    def all_pedidos() -> list:
+    def select_all_pedidos() -> list:
         key = Connection.connectBD()
         cursor = key.cursor()
-        query = 'SELECT * FROM cafeteria.pedidos WHERE entregado = False;'
+        query = 'SELECT * FROM cafeteria.pedidos'  
+        
+        try:
+            cursor.execute( query)
+            return cursor.fetchall()
+        except mysql.connector.Error as e:
+            print(f'Error: {e}')
+        finally:
+            cursor.close()
+            key.close()
+            
+       
+    @staticmethod
+    def productos_pedidos() -> list:
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = '''SELECT pastel, flan , docena_galletas, brownie, americano, malteada, smoothie
+        FROM cafeteria.pedidos WHERE entregado = False ORDER BY id 
+        '''
         
         try:
             cursor.execute(query)

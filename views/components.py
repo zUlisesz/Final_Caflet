@@ -231,6 +231,27 @@ ingredientes_table = ft.DataTable(
     rows= []
 )
 
+#componente gráficos de la tabla de pedidos
+pedidos_columns=[
+    ft.DataColumn(ft.Text(value = 'PASTEL')),
+    ft.DataColumn(ft.Text(value = 'FLAN')),
+    ft.DataColumn(ft.Text(value = 'GALLETAS')),
+    ft.DataColumn(ft.Text(value = 'BROWNIE')),
+    ft.DataColumn(ft.Text(value = 'AMERICANO')),
+    ft.DataColumn(ft.Text(value = 'MALTEADA')),
+    ft.DataColumn(ft.Text(value = 'SMOOTHIE')),
+]
+
+pedidos_table = ft.DataTable(
+    heading_row_color= ft.Colors.GREY_200,
+    border_radius= 12 ,
+    checkbox_horizontal_margin = 4 ,
+    show_checkbox_column= True,
+    show_bottom_border= True,
+    columns= pedidos_columns,
+    rows= []
+)
+
 #Entradas de texto de validación
 user_password = ft.TextField(label = 'CONTRASEÑA', width= 300, border_radius= 12, password= True)
 

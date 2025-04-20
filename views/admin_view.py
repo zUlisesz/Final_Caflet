@@ -1,6 +1,7 @@
 import flet as ft
 from views.components import stats_image, fuente
 from views.ingredientes_view import ingredientesView
+from views.pedidos_view import pedidosView
 def administradorView(page: ft.Page):
     from views.main_view import mainView
     page.controls.clear()
@@ -20,7 +21,7 @@ def administradorView(page: ft.Page):
                             spacing= 42,
                             controls= [
                                 ft.Text('BIENVENIDO ADMINISTRADOR', size= 30, font_family= fuente, weight= ft.FontWeight.W_700),
-                                ft.ElevatedButton(text= 'REVISAR PEDIDOS', elevation= 20, width= 340, height= 60),
+                                ft.ElevatedButton(text= 'REVISAR PEDIDOS', elevation= 20, width= 340, height= 60, on_click= lambda e: pedidosView(page)),
                                 ft.ElevatedButton(text= 'REVISAR INGREDIENTES', elevation= 20, width= 340, height= 60, on_click= lambda e: ingredientesView(page)),
                                 ft.ElevatedButton(text= 'REVISAR VENTAS', elevation= 20, width= 340, height= 60),
                                 ft.ElevatedButton(text= 'REVISAR ESTADÍSTICAS', elevation= 20, width= 340, height= 60),
