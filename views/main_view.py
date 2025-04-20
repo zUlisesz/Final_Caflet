@@ -20,7 +20,7 @@ def mainView(page: ft.Page):
 
     def validation(e):
         if cp.user_password != None:
-            if cp.user_password.value.strip() == 'soyyo':
+            if cp.user_password.value.strip() == 'pass':
                 page.close(cp.log_in)
                 administradorView(page)
             else:

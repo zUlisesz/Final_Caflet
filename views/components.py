@@ -220,8 +220,8 @@ order_table = ft.DataTable(
 ingredientes_columns = [
     ft.DataColumn(ft.Text('NOMBRE', font_family= fuente)),
     ft.DataColumn(ft.Text('CANTIDAD', font_family= fuente)),
-    ft.DataColumn(ft.Text('MÍNIMO DE INGREDIENTES', font_family= fuente)),
-    ft.DataColumn(ft.Text('MÁXIMO DE INGREDIENTES', font_family= fuente)),
+    ft.DataColumn(ft.Text('MÍNIMOS', font_family= fuente)),
+    ft.DataColumn(ft.Text('MÁXIMOS', font_family= fuente)),
 ]
 
 ingredientes_table = ft.DataTable(
