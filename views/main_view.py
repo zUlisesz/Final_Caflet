@@ -6,6 +6,7 @@ from views.admin_view import administradorView
 import views.components as cp
 
 def mainView(page: ft.Page):
+    page.controls.clear()
     page.scroll = True
     page.adaptive = True
     page.vertical_alignment = ft.MainAxisAlignment.CENTER

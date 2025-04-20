@@ -9,6 +9,7 @@ def on_row_selected(e):
     caja_pedido.content = order_table
     order_table.visible = True
     caja_pedido.alignment = ft.alignment.top_center
+    
     row_name = e.control.data
     updated = False
     for row in order_table.rows:
@@ -29,6 +30,10 @@ def on_row_selected(e):
             )
         )
     
+    actual_orden.agregar_productos(order_table)
+    letrero.value = f'TOTAL DE TU CUENTA: {actual_orden.calcular_cuenta()}'
+    letrero.update()
+    
     
     caja_pedido.update()
     actual_orden.agregar_productos(order_table)
@@ -40,22 +45,25 @@ def reset_values(e = None) ->None:
     
 def hacer_pedido(e) -> None:
     
-    actual_orden.agregar_productos(order_table)
-    Ingrediente.cargar_ingredientes()
-    totales = Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
-    caja_pedido.alignment = ft.alignment.center
-    if actual_orden.es_producible(totales):
-        actual_orden.cocinar(totales)
+    if not len(order_table.rows) == 0:
+        actual_orden.agregar_productos(order_table)
         Ingrediente.cargar_ingredientes()
-        Consulta.send_pedido(actual_orden)
-        caja_pedido.content = successfuly_done
-        
-    else:
-        caja_pedido.content = not_enogh
-        
-    actual_orden.limpiar_pedido()
-    order_table.rows.clear()
-    caja_pedido.update()
+        totales = Ingrediente.calcular_ingredientes_totales(actual_orden.productos)
+        caja_pedido.alignment = ft.alignment.center
+        if actual_orden.es_producible(totales):
+            actual_orden.cocinar(totales)
+            Ingrediente.cargar_ingredientes()
+            Consulta.send_pedido(actual_orden)
+            caja_pedido.content = successfuly_done
+            
+        else:
+            caja_pedido.content = not_enogh
+            
+        letrero.value = instrucciones
+        letrero.update()
+        actual_orden.limpiar_pedido()
+        order_table.rows.clear()
+        caja_pedido.update()
     
     
 
@@ -227,11 +235,12 @@ empty_fields  = ft.AlertDialog(
 not_enogh = ft.Text(
     value = 'SENTIMOS INFORMALE QUE:\nNO CONTAMOS CON TODOS LOS INGREDIENTES PARA SATISFACER SU PEDIDO',
     font_family= fuente,
-    weight= ft.FontWeight.W_500
+    weight= ft.FontWeight.W_500,
+    size= 20 
 ) 
 
 successfuly_done = ft.Text(
-    value = 'PEDIDO REALIZADO CON ÉXITO,\nORDEN LISTA EN APROXIMADAMENTE\n20 MINUTOS',
+    value = 'PEDIDO REALIZADO CON ÉXITO,\nLISTO EN APROXIMADAMENTE\n20 MINUTOS',
     font_family= fuente,
     size= 20 ,
     weight= ft.FontWeight.W_500,
@@ -261,9 +270,12 @@ log_in = ft.BottomSheet(
 
 titulo_cafeteria = ft.Text(value = 'BIENVENIDO A LA CAFETERÍA' , size=40 , font_family = fuente)
 customer_title = ft.Text(value = 'CREANDO MI PEDIDO', size=30,font_family= fuente) 
-instructions_label = ft.Text( value = '''PARA CREAR TU PEDIDO SOLO HAZ CLICK SOBRE EL PRODUCTO QUE
-QUE DESEAS ODERNAR EN LOS MENÚS''',
-font_family= fuente, size= 16)
+
+
+instrucciones = '''PARA CREAR TU PEDIDO HAZ CLICK SOBRE EL PRODUCTO QUE
+QUE DESEAS ODERNAR EN LOS MENÚS'''
+
+letrero = ft.Text( value = instrucciones, font_family= fuente, size= 16)
 
 boton_pedido = ft.ElevatedButton(
     text= 'HACER PEDIDO',

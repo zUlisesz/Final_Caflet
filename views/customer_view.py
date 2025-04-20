@@ -31,13 +31,13 @@ def customerView(page: ft.Page):
                                 horizontal_alignment= ft.MainAxisAlignment.CENTER,
                                 controls=[
                                     customer_title,
-                                    instructions_label,
+                                    letrero,
                                     boton_pedido,
                                     ft.ElevatedButton(
                                         text= 'VOLVER AL INICIO',
                                         width= 300,
                                         elevation= 20 ,
-                                        on_click= lambda e: print('presionado') 
+                                        on_click= lambda e: mainView(page) 
                                     )
                                 ]
                             ), padding= ft.padding.symmetric( horizontal= 40 , vertical= 20)),
