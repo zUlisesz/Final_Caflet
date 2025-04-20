@@ -24,12 +24,13 @@ def mainView(page: ft.Page):
             page.close(control)
 
     def call_login(e) -> None:
-        cp.log_in.content.content.controls[2].on_click = validadtion
+        cp.log_in.content.content.controls[1].on_click = validation
         safe_open(cp.log_in)
 
-    def validadtion(e):
-        if cp.user_name != None and cp.user_password != None:
-            if cp.user_password.value.strip() == 'user.get_password()':
+    def validation(e):
+        if cp.user_password != None:
+            if cp.user_password.value.strip() == 'soyyo':
+                page.close(cp.log_in)
                 administradorView(page)
             else:
                 safe_open(cp.wrong_password)         

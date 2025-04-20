@@ -40,7 +40,6 @@ def on_row_selected(e):
     order_table.update()
     
 def reset_values(e = None) ->None:
-    user_name.value = None
     user_password.value = None
     
 def hacer_pedido(e) -> None:
@@ -73,7 +72,9 @@ fuente = 'Arial'
 #imágenes de las vistas
 admin_image = ft.Image(src="assets/admin.png",width=340,height=400,fit=ft.ImageFit.CONTAIN)
 customer_image = ft.Image(src="assets/customer.png",width=340,height=400,fit=ft.ImageFit.CONTAIN)
-ideas_image = ft.Image(src= 'ideas_4.png', width= 400, height= 400, fit  = ft.ImageFit.CONTAIN)
+ideas_image = ft.Image(src= 'assets/ideas_4.png', width= 400, height= 400, fit  = ft.ImageFit.CONTAIN)
+
+stats_image = ft.Image(src = 'assets/stats.png', width= 500  ,height= 500 , fit = ft.ImageFit.CONTAIN)
 
 #letreros de las imágenes de las vista
 admin_label = ft.Text(
@@ -215,14 +216,9 @@ order_table = ft.DataTable(
 )
 
 #Entradas de texto de validación
-user_name =ft.TextField(label = 'NOMBRE DE USUARIO', width= 300,border_radius= 12)
 user_password = ft.TextField(label = 'CONTRASEÑA', width= 300, border_radius= 12, password= True)
 
 #Alertas emergentes
-
-not_found = ft.AlertDialog(
-    content= ft.Text(value = f'USUARIO {user_name.value} NO EXISTENTE', font_family= fuente)
-)
 
 wrong_password = ft.AlertDialog(
     content= ft.Text(value = f'LA CONTRASEÑA {user_password.value} ES INCORRECTA', font_family= fuente)
@@ -250,13 +246,13 @@ successfuly_done = ft.Text(
 log_in = ft.BottomSheet(
     content= ft.Container(
         width= 500,
-        height= 240,
+        height= 200,
         alignment= ft.alignment.center,
         padding= 30,
         content= ft.Column(
             spacing= 20,
             controls= [
-                user_name, user_password,
+                user_password,
                 ft.ElevatedButton(text= 'ACCEDER', width= 300)
             ]
         )     

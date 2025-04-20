@@ -7,7 +7,7 @@ def print_orden()-> None:
         print(element)
         
 def print_pedidos() -> None:
-    for element in Pedido.contenido:
+    for element in Pedido.contenido.values():
         print(element)
         
 
