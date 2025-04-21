@@ -22,49 +22,40 @@ def print_inventario():
 import flet as ft
 
 def main(page: ft.Page):
-    page.title = "Tabla con Checkboxes"
-    page.scroll = True
-
-    seleccionados = set()  # Guardará los IDs o índices seleccionados
-
-    # Datos de ejemplo
-    datos = [
-        {"id": 1, "nombre": "Harina", "cantidad": "2 kg"},
-        {"id": 2, "nombre": "Azúcar", "cantidad": "1 kg"},
-        {"id": 3, "nombre": "Huevos", "cantidad": "12 unidades"},
+    colors = [
+        ft.Colors.RED,
+        ft.colors.BLUE,
+        ft.Colors.YELLOW,
+        ft.Colors.PURPLE,
+        ft.Colors.LIME,
     ]
 
-    def checkbox_changed(e, item_id):
-        if e.control.value:
-            seleccionados.add(item_id)
-        else:
-            seleccionados.discard(item_id)
-        print("Seleccionados:", seleccionados)
+    def get_options():
+        options = []
+        for color in colors:
+            options.append(
+                ft.DropdownOption(
+                    key=color.value,
+                    content=ft.Text(
+                        value=color.value,
+                        color=color,
+                    ),
+                )
+            )
+        return options
 
-    # Construcción dinámica de filas
-    filas = []
-    for item in datos:
-        checkbox = ft.Checkbox(value=False)
-        checkbox.on_change = lambda e, item_id=item["id"]: checkbox_changed(e, item_id)
+    def dropdown_changed(e):
+        e.control.color = e.control.value
+        page.update()
 
-        fila = ft.DataRow(
-            cells=[
-                ft.DataCell(checkbox),
-                ft.DataCell(ft.Text(item["nombre"])),
-                ft.DataCell(ft.Text(item["cantidad"])),
-            ]
-        )
-        filas.append(fila)
-
-    tabla = ft.DataTable(
-        columns=[
-            ft.DataColumn(label=ft.Text("Seleccionar")),
-            ft.DataColumn(label=ft.Text("Ingrediente")),
-            ft.DataColumn(label=ft.Text("Cantidad")),
-        ],
-        rows=filas,
+    dd = ft.Dropdown(
+        editable=True,
+        label="Color",
+        options=get_options(),
+        on_change=dropdown_changed,
     )
 
-    page.add(tabla)
+    page.add(dd)
 
-ft.app(target=main)
+
+ft.app(main)

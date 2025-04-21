@@ -2,7 +2,10 @@ import flet as ft
 from views.components import stats_image, fuente
 from views.ingredientes_view import ingredientesView
 from views.pedidos_view import pedidosView
+from views.ventas_view import ventasView
 def administradorView(page: ft.Page):
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
     from views.main_view import mainView
     page.controls.clear()
     page.add(
@@ -23,7 +26,7 @@ def administradorView(page: ft.Page):
                                 ft.Text('BIENVENIDO ADMINISTRADOR', size= 30, font_family= fuente, weight= ft.FontWeight.W_700),
                                 ft.ElevatedButton(text= 'REVISAR PEDIDOS', elevation= 20, width= 340, height= 60, on_click= lambda e: pedidosView(page)),
                                 ft.ElevatedButton(text= 'REVISAR INGREDIENTES', elevation= 20, width= 340, height= 60, on_click= lambda e: ingredientesView(page)),
-                                ft.ElevatedButton(text= 'REVISAR VENTAS', elevation= 20, width= 340, height= 60),
+                                ft.ElevatedButton(text= 'REVISAR VENTAS', elevation= 20, width= 340, height= 60, on_click= lambda e: ventasView(page)),
                                 ft.ElevatedButton(text= 'REVISAR ESTADÍSTICAS', elevation= 20, width= 340, height= 60),
                                 ft.ElevatedButton(text= 'VOLVER AL INCIO', elevation= 20, width= 340, height= 60, on_click= lambda e: mainView(page))
                             ]

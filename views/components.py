@@ -252,6 +252,27 @@ pedidos_table = ft.DataTable(
     rows= []
 )
 
+#componentes gráficos de la tabla de ventas
+ventas_columns=[
+    ft.DataColumn(ft.Text(value = 'ID', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'PASTEL', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'FLAN', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'GALLETAS', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'BROWNIE', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'AMERICANO', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'MALTEADA', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'SMOOTHIE', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'FECHA', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'TOTAL', font_family= fuente)),
+]
+
+ventas_table = ft.DataTable(
+    heading_row_color= ft .Colors.GREY_200,
+    border_radius= 12,
+    columns= ventas_columns,
+    rows= []
+)
+
 #Entradas de texto de validación
 user_password = ft.TextField(label = 'CONTRASEÑA', width= 300, border_radius= 12, password= True)
 
@@ -320,4 +341,18 @@ boton_pedido = ft.ElevatedButton(
 caja_pedido = Box700x340(
     control= order_table,
     aligment= ft.alignment.top_center
+)
+
+
+opciones =[
+    'TODAS LAS VENTAS',
+    'VENTAS DE ESTA SEMANA',
+    'VENTAS DE ESTE MES',
+    'VENTAS DE ESTE AÑO'
+]
+
+ventas_title = ft.Text(
+    value = 'QUE TÁL GERENTE, ESTAS SON NUESTRAS VENTAS',
+    font_family= fuente,
+    size= 26 
 )

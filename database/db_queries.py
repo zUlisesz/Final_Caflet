@@ -55,7 +55,9 @@ class Consulta:
     def all_ventas() -> list:
         key = Connection.connectBD()
         cursor = key.cursor()
-        query = 'SELECT * FROM cafeteria.pedidos WHERE entregado = True;'
+        query = '''SELECT id, pastel, flan , docena_galletas, brownie, americano, malteada, smoothie,fecha, total
+        FROM cafeteria.pedidos WHERE entregado = True
+        '''
         
         try:
             cursor.execute(query)
