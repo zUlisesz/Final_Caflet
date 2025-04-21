@@ -346,13 +346,14 @@ caja_pedido = Box700x340(
 
 opciones =[
     'TODAS LAS VENTAS',
+    'VENTAS DE ESTE DÍA',
     'VENTAS DE ESTA SEMANA',
     'VENTAS DE ESTE MES',
     'VENTAS DE ESTE AÑO'
 ]
 
 ventas_title = ft.Text(
-    value = 'QUE TÁL GERENTE, ESTAS SON NUESTRAS VENTAS',
+    value = 'QUE TÁL GERENTE, ÉSTAS SON NUESTRAS VENTAS',
     font_family= fuente,
     size= 26 
 )

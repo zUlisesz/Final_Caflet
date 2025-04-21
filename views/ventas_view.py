@@ -19,7 +19,28 @@ def ventasView(page:ft.Page):
         return options
     
     def seleccionar(e)-> None:
-        print(type(e))
+        contenido = ()
+        if selector.value == 'TODAS LAS VENTAS':
+            contenido = Consulta.all_ventas()
+        elif selector.value == 'VENTAS DE ESTE DÍA':
+            contenido = Consulta.ventas_dia_actual()
+        elif selector.value == 'VENTAS DE ESTA SEMANA':
+            contenido = Consulta.ventas_semana_actual()
+        elif selector.value == 'VENTAS DE ESTE MES':
+            contenido = Consulta.ventas_mes_actual()
+        elif selector.value == 'VENTAS DE ESTE AÑO':
+            contenido = Consulta.ventas_año_actual()
+        
+        ventas_table.rows = [
+            ft.DataRow(
+                cells=[ft.DataCell(ft.Text(str(cell))) for cell in row]
+            )
+            for row in contenido
+        ]
+        
+        ventas_table.update()
+        
+        
         
     ventas_table.rows = [
         ft.DataRow(
