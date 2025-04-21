@@ -222,3 +222,99 @@ class Consulta:
         finally:
             cursor.close()
             conexion.close()
+            
+    @staticmethod
+    def sum_hoy() -> int:
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = '''SELECT SUM(total) FROM cafeteria.pedidos
+        WHERE entregado = True
+        AND DATE(fecha) = CURDATE()'''
+        
+        try:
+            cursor.execute(query)
+            tot = cursor.fetchone()
+            return tot[0] if tot[0] is not None else 0
+        except mysql.connector.Error as e:
+            print(f'Error: {e}')
+        finally:
+            cursor.close()
+            key.close()
+       
+    @staticmethod     
+    def sum_semana()-> int:
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = '''
+        SELECT SUM(total)
+        FROM cafeteria.pedidos
+        WHERE entregado = True
+        AND YEARWEEK(fecha, 1) = YEARWEEK(CURDATE(), 1)
+        '''
+        
+        try:
+            cursor.execute(query)
+            tot = cursor.fetchone()
+            return tot[0] if tot[0] is not None else 0
+        except mysql.connector.Error as e:
+            print(f'Error: {e}')
+        finally:
+            cursor.close()
+            key.close()
+            
+    @staticmethod
+    def sum_mes()-> int:
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = '''
+        SELECT SUM(total)
+        FROM cafeteria.pedidos
+        WHERE entregado = True
+        AND MONTH(fecha) = MONTH(CURDATE())
+        AND YEAR(fecha) = YEAR(CURDATE())
+        '''
+        try:
+            cursor.execute(query)
+            tot = cursor.fetchone()
+            return tot[0] if tot[0] is not None else 0
+        except mysql.connector.Error as e:
+            print(f'Error: {e}')
+        finally:
+            cursor.close()
+            key.close()
+            
+    @staticmethod
+    def sum_año()-> int :
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = '''
+        SELECT SUM(total)
+        FROM cafeteria.pedidos
+        WHERE entregado = True
+        AND YEAR(fecha) = YEAR(CURDATE())
+        '''
+        try:
+            cursor.execute(query)
+            tot = cursor.fetchone()
+            return tot[0] if tot[0] is not None else 0
+        except mysql.connector.Error as e:
+            print(f'Error: {e}')
+        finally:
+            cursor.close()
+            key.close()
+            
+    @staticmethod
+    def sum_total()-> int :
+        key = Connection.connectBD()
+        cursor = key.cursor()
+        query = 'SELECT SUM(total) from cafeteria.pedidos'
+        
+        try:
+            cursor.execute(query)
+            tot = cursor.fetchone()
+            return tot[0] if tot[0] is not None else 0
+        except mysql.connector.Error as e:
+            print(f'Error: {e}')
+        finally:
+            cursor.close()
+            key.close()

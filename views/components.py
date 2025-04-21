@@ -355,5 +355,12 @@ opciones =[
 ventas_title = ft.Text(
     value = 'QUE TÁL GERENTE, ÉSTAS SON NUESTRAS VENTAS',
     font_family= fuente,
-    size= 26 
+    size= 30
 )
+
+estadisticas_title = ft.Text("ESTOS SON LOS DATOS MÁS IMPORTANTES A CONOCER", size=30, font_family= fuente)
+label_ventas_hoy = ft.Text(value = F'ESTE DÍA HAS VENDIDO: $ {Consulta.sum_hoy()}', size=18 , font_family= fuente)
+label_ventas_semana = ft.Text(value = F'ESTA SEMANA HAS VENDIDO: $ {Consulta.sum_semana()}', size=18 , font_family= fuente)
+label_ventas_mes = ft.Text(value = F'ESTE MES HAS VENDIDO: $ {Consulta.sum_mes()}', size=18 , font_family= fuente)
+label_ventas_año = ft.Text(value = F'ESTE AÑO HAS VENDIDO: $ {Consulta.sum_año()}', size=18 , font_family= fuente)
+label_ventas_totales = ft.Text(value = F'TUS VENTAS TOTALES SON DE: $ {Consulta.sum_total()}', size=18 , font_family= fuente)
