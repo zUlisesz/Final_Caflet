@@ -233,20 +233,20 @@ ingredientes_table = ft.DataTable(
 
 #componente gráficos de la tabla de pedidos
 pedidos_columns=[
-    ft.DataColumn(ft.Text(value = 'PASTEL')),
-    ft.DataColumn(ft.Text(value = 'FLAN')),
-    ft.DataColumn(ft.Text(value = 'GALLETAS')),
-    ft.DataColumn(ft.Text(value = 'BROWNIE')),
-    ft.DataColumn(ft.Text(value = 'AMERICANO')),
-    ft.DataColumn(ft.Text(value = 'MALTEADA')),
-    ft.DataColumn(ft.Text(value = 'SMOOTHIE')),
+    ft.DataColumn(ft.Text(value = 'ID', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'PASTEL', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'FLAN', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'GALLETAS', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'BROWNIE', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'AMERICANO', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'MALTEADA', font_family= fuente)),
+    ft.DataColumn(ft.Text(value = 'SMOOTHIE', font_family= fuente)),
 ]
 
 pedidos_table = ft.DataTable(
     heading_row_color= ft.Colors.GREY_200,
-    border_radius= 12 ,
-    checkbox_horizontal_margin = 4 ,
-    show_checkbox_column= True,
+    
+    border_radius= 12,
     show_bottom_border= True,
     columns= pedidos_columns,
     rows= []

@@ -38,7 +38,7 @@ class Consulta:
     def productos_pedidos() -> list:
         key = Connection.connectBD()
         cursor = key.cursor()
-        query = '''SELECT pastel, flan , docena_galletas, brownie, americano, malteada, smoothie
+        query = '''SELECT id, pastel, flan , docena_galletas, brownie, americano, malteada, smoothie
         FROM cafeteria.pedidos WHERE entregado = False ORDER BY id 
         '''
         
