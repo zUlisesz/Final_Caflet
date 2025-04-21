@@ -3,6 +3,7 @@ from views.components import stats_image, fuente
 from views.ingredientes_view import ingredientesView
 from views.pedidos_view import pedidosView
 from views.ventas_view import ventasView
+from views.estadisticas_view import estadisticasView
 def administradorView(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
@@ -27,7 +28,7 @@ def administradorView(page: ft.Page):
                                 ft.ElevatedButton(text= 'REVISAR PEDIDOS', elevation= 20, width= 340, height= 60, on_click= lambda e: pedidosView(page)),
                                 ft.ElevatedButton(text= 'REVISAR INGREDIENTES', elevation= 20, width= 340, height= 60, on_click= lambda e: ingredientesView(page)),
                                 ft.ElevatedButton(text= 'REVISAR VENTAS', elevation= 20, width= 340, height= 60, on_click= lambda e: ventasView(page)),
-                                ft.ElevatedButton(text= 'REVISAR ESTADÍSTICAS', elevation= 20, width= 340, height= 60),
+                                ft.ElevatedButton(text= 'REVISAR ESTADÍSTICAS', elevation= 20, width= 340, height= 60, on_click= lambda e: estadisticasView(page)),
                                 ft.ElevatedButton(text= 'VOLVER AL INCIO', elevation= 20, width= 340, height= 60, on_click= lambda e: mainView(page))
                             ]
                         )

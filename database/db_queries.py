@@ -16,9 +16,7 @@ class Consulta:
         finally:
             cursor.close()
             key.close
-            
-      
-      
+              
     @staticmethod
     def select_all_pedidos() -> list:
         key = Connection.connectBD()
@@ -199,3 +197,28 @@ class Consulta:
             cursor.close()
             key.close()
 
+    @staticmethod
+    def top_productos():
+        conexion = Connection.connectBD()
+        cursor = conexion.cursor()
+        query = """
+            SELECT 'PASTEL', SUM(pastel) FROM pedidos WHERE entregado = True
+            UNION
+            SELECT 'FLAN', SUM(flan) FROM pedidos WHERE entregado = True
+            UNION
+            SELECT 'GALLETAS', SUM(docena_galletas) FROM pedidos WHERE entregado = True
+            UNION
+            SELECT 'BROWNIE', SUM(brownie) FROM pedidos WHERE entregado = True
+            UNION
+            SELECT 'AMERICANO', SUM(americano) FROM pedidos WHERE entregado = True
+            UNION
+            SELECT 'MALTEADA', SUM(malteada) FROM pedidos WHERE entregado = True
+            UNION
+            SELECT 'SMOOTHIE', SUM(smoothie) FROM pedidos WHERE entregado = True
+        """
+        try:
+            cursor.execute(query)
+            return cursor.fetchall()
+        finally:
+            cursor.close()
+            conexion.close()
