@@ -85,6 +85,7 @@ admin_label = ft.Text(
     text_align= ft.TextAlign.CENTER
 ) 
 
+
 customer_label  = ft.Text(
     value = 'ACCEDER COMO CLIENTE',
     font_family= fuente ,
