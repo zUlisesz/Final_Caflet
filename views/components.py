@@ -78,7 +78,7 @@ stats_image = ft.Image(src = 'assets/stats.png', width= 660,height= 660 , fit = 
 
 #letreros de las imágenes de las vista
 admin_label = ft.Text(
-    value = 'SIGN AS ADMINISTRATOR',
+    value = 'ACCEDER COMO TRABAJADOR',
     font_family= fuente ,
     size= 28,
     width= 380,
@@ -86,7 +86,7 @@ admin_label = ft.Text(
 ) 
 
 customer_label  = ft.Text(
-    value = 'SIGN AS CUSTOMER',
+    value = 'ACCEDER COMO CLIENTE',
     font_family= fuente ,
     size= 28,
     width= 340,
@@ -283,7 +283,7 @@ wrong_password = ft.AlertDialog(
 )
 
 empty_fields  = ft.AlertDialog(
-    content= ft.Text(value = 'ASEGURESE DE LLENAR TODOS LOS CMPOS', font_family= fuente)
+    content= ft.Text(value = 'ASEGURESE DE LLENAR TODOS LOS CAMPOS', font_family= fuente)
 )
 
 not_enogh = ft.Text(
