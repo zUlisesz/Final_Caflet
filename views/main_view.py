@@ -46,8 +46,8 @@ def mainView(page: ft.Page):
             content=ft.Row(
                 spacing=30,
                 controls=[
-                    Box400x500(event=lambda e: requests_view(page), content= ft.Column(
-                        controls=[cp.ideas_image, cp.ideas_label]
+                    Box400x500(content= ft.Column(
+                        controls=[cp.logo_image, cp.logo_label]
                     )),
                     Box400x500(event=call_login, content= ft.Column(
                         controls=[cp.admin_image, cp.admin_label]

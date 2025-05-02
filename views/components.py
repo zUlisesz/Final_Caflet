@@ -72,7 +72,7 @@ fuente = 'Arial'
 #imágenes de las vistas
 admin_image = ft.Image(src="assets/admin.png",width=340,height=400,fit=ft.ImageFit.CONTAIN)
 customer_image = ft.Image(src="assets/customer.png",width=340,height=400,fit=ft.ImageFit.CONTAIN)
-ideas_image = ft.Image(src= 'assets/ideas_4.png', width= 400, height= 400, fit  = ft.ImageFit.CONTAIN)
+logo_image = ft.Image(src= 'assets/logoBuap.png', width= 400, height= 400, fit  = ft.ImageFit.CONTAIN)
 
 stats_image = ft.Image(src = 'assets/stats.png', width= 660,height= 660 , fit = ft.ImageFit.CONTAIN)
 
@@ -94,8 +94,8 @@ customer_label  = ft.Text(
     text_align= ft.TextAlign.CENTER
 ) 
 
-ideas_label = ft.Text(
-    value = '¿SE TE ANTOJA ALGO NUEVO?\nCUENTANOS',
+logo_label = ft.Text(
+    value = 'CIENCIAS DE LA COMPUTACIÓN',
     font_family= fuente ,
     size= 26,
     width= 400,
