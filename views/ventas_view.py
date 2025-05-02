@@ -4,6 +4,7 @@ from views.components import  opciones, ventas_table, ventas_title
 
 def ventasView(page:ft.Page):
     from views.admin_view import administradorView
+    
     icon_back = ft.IconButton(icon=ft.Icons.ARROW_BACK, icon_size= 50, on_click= lambda e: administradorView(page)) 
     page.controls.clear()
     def get_options() -> list:
@@ -67,7 +68,7 @@ def ventasView(page:ft.Page):
                 spacing= 30 ,
                 controls=[
                     ft.Row(
-                        spacing = 60 ,
+                        spacing = 30 ,
                         controls= [
                             ventas_title,
                             selector,

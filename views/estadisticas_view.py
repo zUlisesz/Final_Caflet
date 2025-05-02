@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import io
 import base64
 import os
-from datetime import datetime
+from datetime import datetime, date
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
@@ -16,21 +16,29 @@ def crear_pdf_estadisticas(ventas_hoy, ventas_semana, ventas_mes, ventas_ano, ve
     nombre_archivo = f"Estadisticas_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
     c = canvas.Canvas(nombre_archivo, pagesize=letter)
     width, height = letter
+    today = date.today()
 
     c.setFont("Helvetica-Bold", 18)
     c.drawString(50, height - 50, "Estadísticas de Ventas - Cafetería")
 
     c.setFont("Helvetica", 12)
-    c.drawString(50, height - 100, f"Ventas del día: {ventas_hoy}")
-    c.drawString(50, height - 120, f"Ventas de la semana: {ventas_semana}")
-    c.drawString(50, height - 140, f"Ventas del mes: {ventas_mes}")
-    c.drawString(50, height - 160, f"Ventas del año: {ventas_ano}")
-    c.drawString(50, height - 180, f"Ventas totales: {ventas_totales}")
+    c.drawString(50, height - 100 , f"Fecha: {today}")
+    c.drawString(50, height - 120, f"Ventas del día: {ventas_hoy}")
+    c.drawString(50, height - 140, f"Ventas de la semana: {ventas_semana}")
+    c.drawString(50, height - 160 , f"Ventas del mes: {ventas_mes}")
+    c.drawString(50, height - 180, f"Ventas del año: {ventas_ano}")
+    c.drawString(50, height - 200, f"Ventas totales: {ventas_totales}")
 
     image_path = "grafica_temp.png"
     with open(image_path, "wb") as f:
         f.write(base64.b64decode(imagen_base64))
-    c.drawImage(image_path, 50, height - 500, width=500, preserveAspectRatio=True)
+    
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(50, height - 220, "Distribución de ventas por producto:")
+
+    # Dibuja la imagen más abajo para evitar que se corte
+    image_height = 400  # Altura en puntos
+    c.drawImage(image_path, 50, height - 220 - image_height, width=500, height=image_height, preserveAspectRatio=True)
 
     c.save()
     print(f"PDF guardado como {nombre_archivo}")
